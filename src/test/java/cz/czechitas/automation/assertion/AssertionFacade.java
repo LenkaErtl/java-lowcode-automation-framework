@@ -24,8 +24,8 @@ public final class AssertionFacade {
         var elementFinder = new ElementFinder(webDriver);
         this.applicationSection = new ApplicationAssertion(elementFinder);
         this.applicationDetailSection = new ApplicationDetailAssertion(elementFinder);
-        this.loginSection = new LoginAssertion(elementFinder);
+        this.loginSection = new LoginAssertion(elementFinder, applicationSection);
         this.homePageSection = new HomePageAssertion(elementFinder);
-        this.generalSection = new GeneralAssertion(elementFinder);
+        this.generalSection = new GeneralAssertion(elementFinder, webDriver);
     }
 }

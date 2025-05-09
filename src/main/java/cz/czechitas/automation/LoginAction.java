@@ -49,4 +49,9 @@ final class LoginAction {
         var logoutButton = elementFinder.findByXPath("//*[@id='logout-link']");
         logoutButton.click();
     }
+
+    void clickRegisterButton() {
+        var registerButton = elementFinder.findByXPath("/html/body/div/div/div/div/div/div/form/div[4]/div/a");
+        registerButton.click();
+    }
 }

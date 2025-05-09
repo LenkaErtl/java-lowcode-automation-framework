@@ -44,6 +44,14 @@ Working with the framework is divided according to elements of the testing appli
 - `insertPassword("mySecurePass123")` - insert password
 - `clickLoginButton()` - click login button once credentials are provided
 - `logout()` - logout
+- `clickRegisterButton()` - click register button
+
+**RegistrationAction** - allows you to register:
+- `insertFirstAndLastName("John", "Doe")` - insert first and last name in the registration form
+- `insertEmail("john.doe@test.cz")` - insert email in the registration form
+- `insertPassword("Password123")` - insert password in the registration form
+- `insertPasswordConfirmation("Password123")` - insert password confirmation in the registration form
+- `clickRegisterButton` - click register button to submit the form
 
 **ProfileAction** - allows you to work with customer profile:
 - `goToProfilePage()` - open profile page from top menu
@@ -74,3 +82,10 @@ Working with the framework is divided according to elements of the testing appli
 `checkRemainingAmountToPay("100.00")` - check that remaining amount to pay is _100.00_ Kč
 `checkTerm("05.02. - 09.02.2024")` - check that the term is _05.02. - 09.02.2024_
 `checkMessageContainsStudentLastName("Novak")` - ensure that _Zpráva pro příjemce_ contains student last name _Novak_
+
+**Login & Registration** - verification steps you can do on the login and registration page
+`checkUserIsLoggedIn("Novak")` - ensure that the user is logged in and the name is _Novak_
+`checkUserIsNotLoggedIn()` - ensure that the user is not logged in
+
+**General Assertions** - verification steps you can do on any page
+`checkCurrentUrl("https://team8-2022brno.herokuapp.com/zaci")` - ensure that the current URL is _https://team8-2022brno.herokuapp.com/zaci_
