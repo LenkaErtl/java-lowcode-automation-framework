@@ -45,7 +45,7 @@ final class LowCodePracticeSolutionTest extends TestRunner {
     void navigation6()
     {
         browser.loginSection.clickLoginMenuLink();
-        browser.loginSection.insertEmail("ptester@test.cz");
+        browser.loginSection.insertEmail("ptestovac@test.cz");
         browser.loginSection.insertPassword("PTester123");
         browser.loginSection.clickLoginButton();
 
@@ -71,14 +71,14 @@ final class LowCodePracticeSolutionTest extends TestRunner {
     void asserts3()
     {
         browser.loginSection.clickLoginMenuLink();
-        browser.loginSection.insertEmail("ptester@test.cz");
+        browser.loginSection.insertEmail("ptestovac@test.cz");
         browser.loginSection.insertPassword("PTester123");
         browser.loginSection.clickLoginButton();
 
         browser.headerMenu.goToApplicationsSection();
         browser.applicationSection.openFirstApplicationDetailsPage();
 
-        asserter.applicationDetailSection.checkTerm("20.01. - 24.01.2025");
+        asserter.applicationDetailSection.checkTerm("04.06. - 08.06.2025");
         asserter.applicationDetailSection.checkFirstName("Pan");
         asserter.applicationDetailSection.checkLastName("Testerek");
         asserter.applicationDetailSection.checkDateOfBirth("12.03.1999");
