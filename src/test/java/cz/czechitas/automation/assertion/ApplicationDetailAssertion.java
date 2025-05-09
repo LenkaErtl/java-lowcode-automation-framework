@@ -62,4 +62,9 @@ public final class ApplicationDetailAssertion {
         var dateElement = elementFinder.findByCssSelector(".card-body h4");
         assertThat(dateElement.getText()).contains(term);
     }
+
+    public void checkHealthDisabilityNote(String healthRestrictionNote) {
+        var healthRestrictionNoteElement = elementFinder.findByXPath("//table/tbody//td[text()='Zdravotní omezení:']/../td[2]");
+        assertThat(healthRestrictionNoteElement.getText()).isEqualTo(healthRestrictionNote);
+    }
 }

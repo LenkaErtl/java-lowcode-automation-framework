@@ -26,9 +26,13 @@ Working with the framework is divided according to elements of the testing appli
 - `insertNote("my personal note")` - insert a note
 - `selectCashPaymentMethod()` - choose cash payment method
 - `selectBankTrasnferPaymentMethod()` - choose bank transfer payment method
+- `selectSlipPaymentMethod()` - choose slip payment method
+- `selectFKSPPaymentMethod()` - choose FKSP payment method
 - `clickAcceptTermsCheckbox()` - accept Terms and Conditions
 - `clickEditApplicationButton()` - save changes upon editing an application
 - `clickCreateApplicationButton()` - click the button to create an application once all the details are provided
+- `clickHealthDisabilityCheckbox()` - click on checkbox for health disability
+- `insertHealthDisabilityNote()` - insert a note for health disability
 
 **InternalMenuAction** - Allows you to work with internal menu upon logging in:
 - `goToOrdersSection()` - go to Objednavky section
@@ -82,6 +86,7 @@ Working with the framework is divided according to elements of the testing appli
 `checkRemainingAmountToPay("100.00")` - check that remaining amount to pay is _100.00_ Kč
 `checkTerm("05.02. - 09.02.2024")` - check that the term is _05.02. - 09.02.2024_
 `checkMessageContainsStudentLastName("Novak")` - ensure that _Zpráva pro příjemce_ contains student last name _Novak_
+`checkHealthDisabilityNote("Note")` - ensure that _Zdravotní omezení_ contains health disability note _Note_
 
 **Login & Registration** - verification steps you can do on the login and registration page
 `checkUserIsLoggedIn("Novak")` - ensure that the user is logged in and the name is _Novak_
