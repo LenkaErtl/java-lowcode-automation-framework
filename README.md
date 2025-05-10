@@ -107,28 +107,28 @@ Working with the framework is divided according to elements of the testing appli
 
 # Assertions
 **Application list** - verification steps you can do on the application list view
-`checkColumnExists("Akce")` - check if _Akce_ column is visible on the page
-`checkApplicationsTableIsEmpty()` - ensure the application list is empty (_Žádné záznamy nenalezeny_ message is displayed)
-`checkNumberOfApplications(5)` - ensure the application list has exactly 5 applications
+- `checkColumnExists("Akce")` - check if _Akce_ column is visible on the page
+- `checkApplicationsTableIsEmpty()` - ensure the application list is empty (_Žádné záznamy nenalezeny_ message is displayed)
+- `checkNumberOfApplications(5)` - ensure the application list has exactly 5 applications
 
 **Application detail view** - verification steps you can do on the detail view
-`checkPaymentMethod("Bankovní převod")` - ensure the application is paid through a bank transfer
-`checkFirstName("Jan")` - check that the student first name is _Jan_
-`checkLastName("Novak")` - check that the student first name is _Novak_
-`checkDateOfBirth("01.01.2010")` - check that the student date of birth is _01.01.2010_
-`checkNote("myPrivateNote")` - check that the note is _myPrivateNote_
-`checkRemainingAmountToPay("100.00")` - check that remaining amount to pay is _100.00_ Kč
-`checkTerm("05.02. - 09.02.2024")` - check that the term is _05.02. - 09.02.2024_
-`checkMessageContainsStudentLastName("Novak")` - ensure that _Zpráva pro příjemce_ contains student last name _Novak_
-`checkHealthDisabilityNote("Note")` - ensure that _Zdravotní omezení_ contains health disability note _Note_
+- `checkPaymentMethod("Bankovní převod")` - ensure the application is paid through a bank transfer
+- `checkFirstName("Jan")` - check that the student first name is _Jan_
+- `checkLastName("Novak")` - check that the student first name is _Novak_
+- `checkDateOfBirth("01.01.2010")` - check that the student date of birth is _01.01.2010_
+- `checkNote("myPrivateNote")` - check that the note is _myPrivateNote_
+- `checkRemainingAmountToPay("100.00")` - check that remaining amount to pay is _100.00_ Kč
+- `checkTerm("05.02. - 09.02.2024")` - check that the term is _05.02. - 09.02.2024_
+- `checkMessageContainsStudentLastName("Novak")` - ensure that _Zpráva pro příjemce_ contains student last name _Novak_
+- `checkHealthDisabilityNote("Note")` - ensure that _Zdravotní omezení_ contains health disability note _Note_
 
 **Order list** - verification steps you can do on the order list view
-`checkOrdersTableIsEmpty()` - ensure the orders list is empty (_Žádné záznamy nenalezeny_ message is displayed)
-`checkNumberOfOrders(5)` - ensure the orders list has exactly 5 orders
+- `checkOrdersTableIsEmpty()` - ensure the orders list is empty (_Žádné záznamy nenalezeny_ message is displayed)
+- `checkNumberOfOrders(5)` - ensure the orders list has exactly 5 orders
 
 **Login & Registration** - verification steps you can do on the login and registration page
-`checkUserIsLoggedIn("Novak")` - ensure that the user is logged in and the name is _Novak_
-`checkUserIsNotLoggedIn()` - ensure that the user is not logged in
+- `checkUserIsLoggedIn("Novak")` - ensure that the user is logged in and the name is _Novak_
+- `checkUserIsNotLoggedIn()` - ensure that the user is not logged in
 
 **General Assertions** - verification steps you can do on any page
-`checkCurrentUrl("https://team8-2022brno.herokuapp.com/zaci")` - ensure that the current URL is _https://team8-2022brno.herokuapp.com/zaci_
+- `checkCurrentUrl("https://team8-2022brno.herokuapp.com/zaci")` - ensure that the current URL is _https://team8-2022brno.herokuapp.com/zaci_
