@@ -71,8 +71,42 @@ Working with the framework is divided according to elements of the testing appli
 - `goToInstructionsAndFormsForParentSection()` - go to Navody a Formulare pro rodice
 - `goToCreateApplicationSection()` - create an application from top header menu (Pro rodice -> Vytvorit prihlasku)
 
+**OrderAction** - allows you to work with the order page:
+- `search("Jan")` - search for an order from Jan
+- `clickAddButton()` - click the button to add a new order
+
+**OrderDetailsAction** - allows you to work with the order detail page:
+- `insertICO("1234567")` - insert ICO into _IČO_ field
+- `insertClient("Odberatel")` - insert a client name into _Odběratel_ field
+- `insertFullAddress("Adresa")` - insert a full address into _Úplná Adresa_ field
+- `insertSubstitute("Jmeno")` - insert a substitute name into _Zastoupena - ředitel(ka) školy_
+- `insertContactPersonNameAndSurname("name", "surname")` - insert a contact person name and surname into _Jméno a příjmení_
+- `insertContactPersonTelephone("+420777888999")` - insert a contact person telephone into _Telefon_
+- `insertContactPersonEmail("email@test.cz")` - insert a contact person email into _Email_
+- `insertStartDate("01.01.2026")` - insert a start date into _Upřednostňovaný termín 1_
+- `insertEndDate("10.01.2026")` - insert a end date into _Upřednostňovaný termín 1_
+- `selectForenoonSuburbanCampVariant()` - select a _Dopolední_ suburban camp variant in the _Kurz_ field
+- `selectAfternoonSuburbanCampVariant()` - select a _Odpolední_ suburban camp variant in the _Kurz_ field
+- `insertChildrenCountToSuburbanCamp(5)` - insert a number of children to the _Počet dětí_ field
+- `insertChildrenCountToSchoolInNature(5)` - insert a number of children to the _Počet dětí_ field
+- `insertInAgeToSuburbanCamp(15)` - insert an age of children to the _Ve věku_ field
+- `insertInAgeToSchoolInNature(15)` - insert an age of children to the _Ve věku_ field
+- `insertAdultsCountToSuburbanCamp(2)` - insert a number of adults to the _Počet pedagogického doprovodu_ field
+- `insertAdultsCountToSchoolInNature(2)` - insert a number of adults to the _Počet pedagogického doprovodu_ field
+- `saveSuburbanCampOrder()` - save the suburban camp order
+- `saveSchoolInNatureOrder()` - save the school in nature order
+- `insertStartTime("12:00")` - insert a start time into _Nástup_ field
+- `selectBreakfastStartToSchoolInNature()` - select _Snídaní_ in the _Strava začíná_ field
+- `selectLunchStartToSchoolInNature()` - select a _Obědem_ suburban camp variant in the _Strava začíná_ field
+- `selectDinnerStartToSchoolInNature()` - select a _Večeří_ suburban camp variant in the _Strava začíná_ field
+- `insertEndTime("20:00")` - insert a end time into _Ukončení_ field
+- `selectBreakfastEndToSchoolInNature()` - select a _Snídaní_ suburban camp variant in the _Strava končí_ field
+- `selectDinnerStartToSchoolInNature()` - select a _Večeří_ suburban camp variant in the _Strava končí_ field
+- `selectDinnerStartToSchoolInNature()` - select a _Večeří_ suburban camp variant in the _Strava končí_ field
+
+
 # Assertions
-**Application list** - verification steps you can do on the list view
+**Application list** - verification steps you can do on the application list view
 `checkColumnExists("Akce")` - check if _Akce_ column is visible on the page
 `checkApplicationsTableIsEmpty()` - ensure the application list is empty (_Žádné záznamy nenalezeny_ message is displayed)
 `checkNumberOfApplications(5)` - ensure the application list has exactly 5 applications
@@ -87,6 +121,10 @@ Working with the framework is divided according to elements of the testing appli
 `checkTerm("05.02. - 09.02.2024")` - check that the term is _05.02. - 09.02.2024_
 `checkMessageContainsStudentLastName("Novak")` - ensure that _Zpráva pro příjemce_ contains student last name _Novak_
 `checkHealthDisabilityNote("Note")` - ensure that _Zdravotní omezení_ contains health disability note _Note_
+
+**Order list** - verification steps you can do on the order list view
+`checkOrdersTableIsEmpty()` - ensure the orders list is empty (_Žádné záznamy nenalezeny_ message is displayed)
+`checkNumberOfOrders(5)` - ensure the orders list has exactly 5 orders
 
 **Login & Registration** - verification steps you can do on the login and registration page
 `checkUserIsLoggedIn("Novak")` - ensure that the user is logged in and the name is _Novak_

@@ -19,6 +19,7 @@ public final class AssertionFacade {
     public final LoginAssertion loginSection;
     public final HomePageAssertion homePageSection;
     public final GeneralAssertion generalSection;
+    public final OrderAssertion orderSection;
 
     public AssertionFacade(WebDriver webDriver) {
         var elementFinder = new ElementFinder(webDriver);
@@ -27,5 +28,6 @@ public final class AssertionFacade {
         this.loginSection = new LoginAssertion(elementFinder, applicationSection);
         this.homePageSection = new HomePageAssertion(elementFinder);
         this.generalSection = new GeneralAssertion(elementFinder, webDriver);
+        this.orderSection = new OrderAssertion(elementFinder);
     }
 }
