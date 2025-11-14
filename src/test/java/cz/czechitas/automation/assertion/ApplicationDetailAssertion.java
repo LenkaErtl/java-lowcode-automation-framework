@@ -67,4 +67,15 @@ public final class ApplicationDetailAssertion {
         var healthRestrictionNoteElement = elementFinder.findByXPath("//table/tbody//td[text()='Zdravotní omezení:']/../td[2]");
         assertThat(healthRestrictionNoteElement.getText()).isEqualTo(healthRestrictionNote);
     }
+
+    public void checkLegalRepresentativeEmail(String expectedEmail) {
+        var emailElement = elementFinder.findByXPath("/html/body/div/div/div/div/div/table/tbody/tr[9]/td[2]");
+        assertThat(emailElement.getText()).isEqualTo(expectedEmail);
+    }
+
+    public void checkLegalRepresentativeName(String expectedName) {
+        var nameElement = elementFinder.findByXPath("/html/body/div/div/div/div/div/table/tbody/tr[5]/td[2]");
+        assertThat(nameElement.getText()).isEqualTo(expectedName);
+    }
+
 }

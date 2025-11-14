@@ -25,14 +25,14 @@ Working with the framework is divided according to elements of the testing appli
 - `insertBirthdate("01.01.2000")` - insert student day of birth
 - `insertNote("my personal note")` - insert a note
 - `selectCashPaymentMethod()` - choose cash payment method
-- `selectBankTrasnferPaymentMethod()` - choose bank transfer payment method
+- `selectBankTransferPaymentMethod()` - choose bank transfer payment method
 - `selectSlipPaymentMethod()` - choose slip payment method
 - `selectFKSPPaymentMethod()` - choose FKSP payment method
 - `clickAcceptTermsCheckbox()` - accept Terms and Conditions
 - `clickEditApplicationButton()` - save changes upon editing an application
 - `clickCreateApplicationButton()` - click the button to create an application once all the details are provided
 - `clickHealthDisabilityCheckbox()` - click on checkbox for health disability
-- `insertHealthDisabilityNote()` - insert a note for health disability
+- `insertHealthDisabilityNote("Note")` - insert a note for health disability
 
 **InternalMenuAction** - Allows you to work with internal menu upon logging in:
 - `goToOrdersSection()` - go to Objednavky section
@@ -42,20 +42,23 @@ Working with the framework is divided according to elements of the testing appli
 - `goToNewsSection()` - go to Aktuality section
 - `goToExportsSection()` - go to Exporty section
 
-**LoginAction** - allows you to login and logout:
+**LoginAction** - allows you to login and logout: (LoginSection)
 - `clickLoginMenuLink()` - click login link in top menu (top right corner)
-- `insertEmail("test@czechitas.cz")` -  insert email
+- `insertNameAndSurname("Novak Jan")` - insert full name into registration/login form
+- `insertEmail("test@czechitas.cz")` - insert email
 - `insertPassword("mySecurePass123")` - insert password
+- `insertPasswordConfirmation("mySecurePass123")` - confirm password
 - `clickLoginButton()` - click login button once credentials are provided
 - `logout()` - logout
-- `clickRegisterButton()` - click register button
+- `clickRegistrationMenuLink()` - click registration link in login form
+- `clickSubmitRegistrationButton()` - click submit button to finish registration
 
 **RegistrationAction** - allows you to register:
 - `insertFirstAndLastName("John", "Doe")` - insert first and last name in the registration form
 - `insertEmail("john.doe@test.cz")` - insert email in the registration form
 - `insertPassword("Password123")` - insert password in the registration form
 - `insertPasswordConfirmation("Password123")` - insert password confirmation in the registration form
-- `clickRegisterButton` - click register button to submit the form
+- `clickRegisterButton()` - click register button to submit the form
 
 **ProfileAction** - allows you to work with customer profile:
 - `goToProfilePage()` - open profile page from top menu
@@ -85,6 +88,10 @@ Working with the framework is divided according to elements of the testing appli
 - `insertContactPersonEmail("email@test.cz")` - insert a contact person email into _Email_
 - `insertStartDate("01.01.2026")` - insert a start date into _Upřednostňovaný termín 1_
 - `insertEndDate("10.01.2026")` - insert a end date into _Upřednostňovaný termín 1_
+- `insertSecondStartDate("05.02.2026")` – insert start date (termín II)
+- `insertSecondEndDate("15.02.2026")` – insert end date (termín II)
+- `insertThirdStartDate("20.03.2026")` – insert start date (termín III)
+- `insertThirdEndDate("25.03.2026")` – insert end date (termín III)
 - `selectForenoonSuburbanCampVariant()` - select a _Dopolední_ suburban camp variant in the _Kurz_ field
 - `selectAfternoonSuburbanCampVariant()` - select a _Odpolední_ suburban camp variant in the _Kurz_ field
 - `insertChildrenCountToSuburbanCamp(5)` - insert a number of children to the _Počet dětí_ field
@@ -102,7 +109,7 @@ Working with the framework is divided according to elements of the testing appli
 - `insertEndTime("20:00")` - insert a end time into _Ukončení_ field
 - `selectBreakfastEndToSchoolInNature()` - select a _Snídaní_ suburban camp variant in the _Strava končí_ field
 - `selectDinnerStartToSchoolInNature()` - select a _Večeří_ suburban camp variant in the _Strava končí_ field
-- `selectDinnerStartToSchoolInNature()` - select a _Večeří_ suburban camp variant in the _Strava končí_ field
+- `selectDinnerEndToSchoolInNature()` - select a _Večeří_ suburban camp variant in the _Strava končí_ field
 
 
 # Assertions
@@ -121,6 +128,8 @@ Working with the framework is divided according to elements of the testing appli
 - `checkTerm("05.02. - 09.02.2024")` - check that the term is _05.02. - 09.02.2024_
 - `checkMessageContainsStudentLastName("Novak")` - ensure that _Zpráva pro příjemce_ contains student last name _Novak_
 - `checkHealthDisabilityNote("Note")` - ensure that _Zdravotní omezení_ contains health disability note _Note_
+- `checkLegalRepresentativeName("Lišák Admin")` – ensure legal representative name is correct
+- `checkLegalRepresentativeEmail("da-app.admin@czechitas.cz")` – ensure legal representative email is correct
 
 **Order list** - verification steps you can do on the order list view
 - `checkOrdersTableIsEmpty()` - ensure the orders list is empty (_Žádné záznamy nenalezeny_ message is displayed)
@@ -129,6 +138,8 @@ Working with the framework is divided according to elements of the testing appli
 **Login & Registration** - verification steps you can do on the login and registration page
 - `checkUserIsLoggedIn("Novak")` - ensure that the user is logged in and the name is _Novak_
 - `checkUserIsNotLoggedIn()` - ensure that the user is not logged in
+- `checkIsLoggedIn()` – verify login state after successful login
 
 **General Assertions** - verification steps you can do on any page
 - `checkCurrentUrl("https://team8-2022brno.herokuapp.com/zaci")` - ensure that the current URL is _https://team8-2022brno.herokuapp.com/zaci_
+- `checkToastContainsText("Objednávka byla úspěšně uložena")` – ověří, že se zobrazila toast hláška potvrzující úspěšné založení objednávky

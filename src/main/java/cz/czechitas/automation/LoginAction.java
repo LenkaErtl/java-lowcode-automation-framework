@@ -23,6 +23,12 @@ final class LoginAction {
         var loginButton = elementFinder.findByCssSelector(".navbar-right .nav-item");
         loginButton.click();
     }
+    void insertNameAndSurname(String nameAndSurname) {
+        Objects.requireNonNull(nameAndSurname);
+
+        var nameSurnameInputBox = elementFinder.findByXPath("//*[@id=\"name\"]");
+        nameSurnameInputBox.sendKeys(nameAndSurname);
+    }
 
     void insertEmail(String email) {
         Objects.requireNonNull(email);
@@ -38,6 +44,13 @@ final class LoginAction {
         passwordInputBox.sendKeys(password);
     }
 
+    void insertPasswordConfirmation(String password) {
+        Objects.requireNonNull(password);
+
+        var passwordConfirmation = elementFinder.findByXPath("//*[@id=\"password-confirm\"]");
+        passwordConfirmation.sendKeys(password);
+    }
+
     void clickLoginButton() {
         var loginButton = elementFinder.findByXPath("//button[@type='submit']");
         loginButton.click();
@@ -50,8 +63,13 @@ final class LoginAction {
         logoutButton.click();
     }
 
-    void clickRegisterButton() {
-        var registerButton = elementFinder.findByXPath("/html/body/div/div/div/div/div/div/form/div[4]/div/a");
+    void clickRegistrationMenuLink() {
+        var registerLink = elementFinder.findByXPath("/html/body/div/div/div/div/div/div/form/div[4]/div/a");
+        registerLink.click();
+    }
+
+    void clickSubmitRegistrationButton() {
+        var registerButton = elementFinder.findByXPath("/html/body/div/div/div/div/div/div[2]/form/div[5]/div/button");
         registerButton.click();
     }
 }

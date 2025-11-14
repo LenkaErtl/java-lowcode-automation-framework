@@ -45,6 +45,25 @@ final class OrderDetailAction {
         endDateInput.sendKeys(endDate);
     }
 
+    void insertSecondStartDate(String startDate) {
+        var startDateInput = elementFinder.findByXPath("//*[@id=\"start_date_2\"]");
+        startDateInput.sendKeys(startDate);
+    }
+
+    void insertSecondEndDate(String endDate) {
+        var endDateInput = elementFinder.findByXPath("//*[@id=\"end_date_2\"]");
+        endDateInput.sendKeys(endDate);
+    }
+    void insertThirdStartDate(String startDate) {
+        var startDateInput = elementFinder.findByXPath("//*[@id=\"start_date_3\"]");
+        startDateInput.sendKeys(startDate);
+    }
+
+    void insertThirdEndDate(String endDate) {
+        var endDateInput = elementFinder.findByXPath("//*[@id=\"end_date_3\"]");
+        endDateInput.sendKeys(endDate);
+    }
+
     void selectForenoonSuburbanCampVariant() {
         var element = elementFinder.findByXPath("//*[@id=\"camp-date_part\"]");
 
