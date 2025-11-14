@@ -14,8 +14,7 @@ final class OrderAction {
 
     private final ElementFinder elementFinder;
 
-    OrderAction(ElementFinder elementFinder)
-    {
+    OrderAction(ElementFinder elementFinder) {
         this.elementFinder = Objects.requireNonNull(elementFinder);
     }
 
@@ -41,5 +40,16 @@ final class OrderAction {
     void insertChildrenCount(int childrenCount) {
         var natureStudentsInput = elementFinder.findByXPath("//*[@id='nature-students']");
         natureStudentsInput.sendKeys(String.valueOf(childrenCount));
+    }
+
+    void clickAddButton() {
+        var addButton = elementFinder.findByXPath("/html/body/div/div/div/div/div/div[1]/a");
+        addButton.click();
+    }
+
+    void search(String textToSearch) {
+        var searchInput = elementFinder.findByXPath("//input[@type='search']");
+        searchInput.clear();
+        searchInput.sendKeys(textToSearch);
     }
 }

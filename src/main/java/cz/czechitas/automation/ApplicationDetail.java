@@ -54,6 +54,16 @@ final class ApplicationDetail {
         approvalCheckbox.click();
     }
 
+    void clickHealthDisabilityCheckbox() {
+        var healthDisabilityCheckbox = elementFinder.findByXPath("/html/body/div/div/div/div/div/form/table/tbody/tr[9]/td[2]/span/label");
+        healthDisabilityCheckbox.click();
+    }
+
+    void insertHealthDisabilityNote(String note) {
+        var healthDisabilityNoteInput = elementFinder.findByXPath("//*[@id=\"restrictions\"]");
+        healthDisabilityNoteInput.sendKeys(note);
+    }
+
     void clickCreateApplicationButton() {
         var createButton = elementFinder.findByXPath(
                 "//input[@type='submit']");
@@ -70,6 +80,18 @@ final class ApplicationDetail {
         var toBankAccountButton = elementFinder.findByXPath(
                 "//label[@for='payment_transfer']");
         toBankAccountButton.click();
+    }
+
+    void selectSlipPaymentMethod() {
+        var slipButton = elementFinder.findByXPath(
+                "//label[@for='payment_postal_order']");
+        slipButton.click();
+    }
+
+    void selectFKSPPaymentMethod() {
+        var fkspButton = elementFinder.findByXPath(
+                "//label[@for='payment_fksp']");
+        fkspButton.click();
     }
 
     void clickEditApplicationButton() {
