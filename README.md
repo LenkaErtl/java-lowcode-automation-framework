@@ -21,7 +21,7 @@ Working with the framework is divided according to elements of the testing appli
 **ApplicationDetail** - Allows you to work with application details page:
 - `selectTerm(String term)` - select a term
 - `insertStudentFirstName("Jan")` - insert student first name
-- `insertStudentLastName("Novak")` - insert student first name
+- `insertStudentLastName("Novak")` - insert student last name
 - `insertBirthdate("01.01.2000")` - insert student day of birth
 - `insertNote("my personal note")` - insert a note
 - `selectCashPaymentMethod()` - choose cash payment method
@@ -44,10 +44,8 @@ Working with the framework is divided according to elements of the testing appli
 
 **LoginAction** - allows you to login and logout: (LoginSection)
 - `clickLoginMenuLink()` - click login link in top menu (top right corner)
-- `insertNameAndSurname("Novak Jan")` - insert full name into registration/login form
-- `insertEmail("test@czechitas.cz")` - insert email
+- `insertEmail("test@czechitas.cz")` -  insert email
 - `insertPassword("mySecurePass123")` - insert password
-- `insertPasswordConfirmation("mySecurePass123")` - confirm password
 - `clickLoginButton()` - click login button once credentials are provided
 - `logout()` - logout
 - `clickRegistrationMenuLink()` - click registration link in login form
