@@ -141,3 +141,4 @@ Working with the framework is divided according to elements of the testing appli
 **General Assertions** - verification steps you can do on any page
 - `checkCurrentUrl("https://team8-2022brno.herokuapp.com/zaci")` - ensure that the current URL is _https://team8-2022brno.herokuapp.com/zaci_
 - `checkToastContainsText("Objednávka byla úspěšně uložena")` – ověří, že se zobrazila toast hláška potvrzující úspěšné založení objednávky
+- `checkOrdersTableIsNotEmpty();` - ověří, že seznam objednávek obsahuje alespoň jeden záznam. Metoda krátce počká na načtení seznamu a pak zkontroluje, že kolekce řádků není prázdná.

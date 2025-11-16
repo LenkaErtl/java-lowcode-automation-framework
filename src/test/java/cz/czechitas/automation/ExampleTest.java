@@ -35,7 +35,9 @@ final class ExampleTest extends TestRunner {
         browser.orderSection.insertICO(icoValue);
     }
 
+    // DATBP25C-10
     // User Registration new account
+
     @Test
     void succesfullRegistration() {
         browser.loginSection.clickLoginMenuLink();
@@ -64,7 +66,6 @@ final class ExampleTest extends TestRunner {
         asserter.loginSection.checkUserIsNotLoggedIn();
     }
 
-    // DATBP25C-10
     // Login process
 
     @Test
@@ -105,7 +106,7 @@ final class ExampleTest extends TestRunner {
     // Test vytvoření přihlášky jako Admin
 
     @Test
-    void succesfullCreateApplication() {
+    void succesfullCreateApplicationAsAdmin() {
         login("da-app.admin@czechitas.cz","Czechitas123");
 
         var randomPrijmeni = browser.generateRandomName(6);
@@ -144,6 +145,38 @@ final class ExampleTest extends TestRunner {
     private String capitalize(String input) {
         if (input == null || input.isEmpty()) return input;
         return input.substring(0,1).toUpperCase() + input.substring(1);
+    }
+
+    // Test vytvoření přihlášky jako Master Admin
+    @Test
+    void succesfullCreateApplicationAsMasterAdmin() {
+        login("da-app.master@czechitas.cz", "AppRoot123");
+
+        var randomPrijmeni = browser.generateRandomName(6);
+        var randomName = browser.generateRandomName(5);
+        var birthdate = generateValidBirthdate();
+
+        browser.internalMenu.goToApplicationsSection();
+        browser.applicationSection.clickCreateNewApplicationButton();
+
+        browser.applicationDetailsSection.selectTerm("02.02. - 06.02.2026");
+        browser.applicationDetailsSection.insertStudentFirstName(randomName);
+        browser.applicationDetailsSection.insertStudentLastName(randomPrijmeni);
+        browser.applicationDetailsSection.insertBirthdate(birthdate);
+        browser.applicationDetailsSection.selectFKSPPaymentMethod();
+        browser.applicationDetailsSection.clickCreateApplicationButton();
+
+    // ověření výsledku
+        asserter.applicationDetailSection.checkTerm("02.02. - 06.02.2026");
+        asserter.applicationDetailSection.checkPaymentMethod("FKSP");
+        asserter.applicationDetailSection.checkLegalRepresentativeName("Robin Master");
+        asserter.applicationDetailSection.checkFirstName(capitalize(randomName));
+        asserter.applicationDetailSection.checkLastName(capitalize(randomPrijmeni));
+        asserter.applicationDetailSection.checkDateOfBirth(birthdate);
+        asserter.applicationDetailSection.checkLegalRepresentativeEmail("da-app.master@czechitas.cz");
+
+        browser.waitFor(7);
+        browser.loginSection.logout();
     }
 
     // Test vytvoření přihlášky jako Rodič
@@ -224,6 +257,46 @@ final class ExampleTest extends TestRunner {
 
     @Test
     void sucessfullOrderasteacher2() {
+        // generování testovacích dat
+        var ico = browser.generateIco(6); // např. "123456"
+        var company = browser.generateCompanyName(5);            // např. "ZŠ Abcde"
+        var address = browser.generateStreetAddress();          // např. "Ulice 12, 66101 Brno"
+        var firstName = browser.generatePersonFirstName(4);     // "Jana"
+        var lastName = browser.generatePersonLastName(6);       // "Nováková"
+        var phone = browser.generatePhoneCz();                  // "+420777123456"
+        var email = browser.generateEmail(firstName + lastName);
+
+        browser.headerMenu.goToKindergartenAndSchoolSection();
+
+        browser.orderSection.insertICO(ico);
+        browser.orderDetailSection.insertClient(company);
+        browser.orderDetailSection.insertFullAddress(address);
+        browser.orderDetailSection.insertSubstitute("Mgr. " + firstName + " " + lastName);
+        browser.orderDetailSection.insertContactPersonNameAndSurname(firstName, lastName);
+        browser.orderDetailSection.insertContactPersonTelephone(phone);
+        browser.orderDetailSection.insertContactPersonEmail(email);
+
+        browser.orderDetailSection.insertStartDate("01.07.2026");
+        browser.orderDetailSection.insertEndDate("05.07.2026");
+        browser.orderDetailSection.insertSecondStartDate("10.07.2026");
+        browser.orderDetailSection.insertSecondEndDate("15.07.2026");
+
+        // Příměstský tábor – dopolední varianta
+        browser.orderSection.selectSuburbanCampOption();
+        browser.orderDetailSection.selectAfternoonSuburbanCampVariant();
+        browser.orderDetailSection.insertChildrenCountToSuburbanCamp(15);
+        browser.orderDetailSection.insertInAgeToSuburbanCamp(10);
+        browser.orderDetailSection.insertAdultsCountToSuburbanCamp(5);
+
+        browser.orderDetailSection.saveSuburbanCampOrder();
+
+        // Ověření výsledku
+        asserter.generalSection.checkCurrentUrl("https://team8-2022brno.herokuapp.com/objednavka/pridat");
+        asserter.generalSection.checkToastContainsText("Objednávka byla úspěšně uložena");
+    }
+
+    @Test
+    void sucessfullOrderasteacher3() {
         browser.headerMenu.goToKindergartenAndSchoolSection();
 
         browser.orderSection.insertICO("22834958");
@@ -252,4 +325,26 @@ final class ExampleTest extends TestRunner {
         asserter.generalSection.checkCurrentUrl("https://team8-2022brno.herokuapp.com/objednavka/pridat");
         asserter.generalSection.checkToastContainsText("Objednávka byla úspěšně uložena");
     }
+
+    // Přihlášení jako admin a kontrola vytvořených přihlášek
+    @Test
+    void succesfullLoginAsAdmin2() {
+        login("da-app.admin@czechitas.cz","Czechitas123");
+
+        browser.internalMenu.goToOrdersSection();
+
+        // Ověření, že tabulka objednávek obsahuje alespoň jednu objednávku
+        asserter.generalSection.checkOrdersTableIsNotEmpty();
+    }
+
+    // Přihlášení jako Master admin a kontrola vytvořených přihlášek
+    @Test
+    void succesfullLoginAsMasterAdmin() {
+        login("da-app.master@czechitas.cz", "AppRoot123");
+
+        browser.internalMenu.goToOrdersSection();
+
+        // Ověření, že tabulka objednávek obsahuje alespoň jednu objednávku
+        asserter.generalSection.checkOrdersTableIsNotEmpty();
+}
 }
