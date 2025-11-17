@@ -36,7 +36,7 @@ final class ApplicationAction {
      */
     void clickCreatePythonApplicationButton() {
         //TODO: modify css selector to reflect python course instead of first course (method parameter?)
-        var createApplicationButton = elementFinder.findByCssSelector(".card-body a");
+        var createApplicationButton = elementFinder.findByCssSelector(".card-body a[href='https://team8-2022brno.herokuapp.com/zaci/pridat/139-python']");
         createApplicationButton.click();
     }
 

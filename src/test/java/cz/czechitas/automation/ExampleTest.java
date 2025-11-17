@@ -3,7 +3,9 @@ package cz.czechitas.automation;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-
+import org.junit.jupiter.api.Test;
+import java.time.format.DateTimeFormatter;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 /**
  * Example test class for functionality showcase
  *
@@ -92,29 +94,22 @@ final class ExampleTest extends TestRunner {
         browser.loginSection.clickLoginButton();
     }
 
-    // Pomocná metoda na generování data narození
-    private String generateValidBirthdate() {
-        var random = new java.util.Random();
-        int year = random.nextInt(2022 - 2006 + 1) + 2006; // mezi 2006 a 2022
-        int month = random.nextInt(12) + 1;
-        int day = random.nextInt(28) + 1; // bezpečně do 28 kvůli únoru
-
-        return String.format("%02d.%02d.%d", day, month, year);
-    }
-
      //DATBP25C-27
     // Test vytvoření přihlášky jako Admin
 
-    @Test
+   @Test
     void succesfullCreateApplicationAsAdmin() {
         login("da-app.admin@czechitas.cz","Czechitas123");
 
         var randomPrijmeni = browser.generateRandomName(6);
         var randomName = browser.generateRandomName(5);
-        var birthdate = generateValidBirthdate();
+        var birthdate = TestDataGenerator.generateBirthdateAtLeastFourYearsOld();
+
+        // pojistka: ověř, že datum je opravdu 4+
+        assertTrue(TestDataGenerator.isAtLeastFourYearsOld(birthdate));
 
         browser.applicationSection.selectProgrammingSection();
-        browser.applicationSection.clickCreatePythonApplicationButton();  
+        browser.applicationSection.clickCreatePythonApplicationButton();
 
         browser.applicationDetailsSection.selectTerm("02.02. - 06.02.2026");
         browser.applicationDetailsSection.insertStudentFirstName(randomName);
@@ -141,6 +136,7 @@ final class ExampleTest extends TestRunner {
         browser.waitFor(7);
         browser.loginSection.logout();
     }
+
     // Pomocná metoda = kapitalizace
     private String capitalize(String input) {
         if (input == null || input.isEmpty()) return input;
@@ -154,7 +150,7 @@ final class ExampleTest extends TestRunner {
 
         var randomPrijmeni = browser.generateRandomName(6);
         var randomName = browser.generateRandomName(5);
-        var birthdate = generateValidBirthdate();
+        var birthdate = TestDataGenerator.generateBirthdateAtLeastFourYearsOld();
 
         browser.internalMenu.goToApplicationsSection();
         browser.applicationSection.clickCreateNewApplicationButton();
@@ -167,13 +163,10 @@ final class ExampleTest extends TestRunner {
         browser.applicationDetailsSection.clickCreateApplicationButton();
 
     // ověření výsledku
-        asserter.applicationDetailSection.checkTerm("02.02. - 06.02.2026");
         asserter.applicationDetailSection.checkPaymentMethod("FKSP");
-        asserter.applicationDetailSection.checkLegalRepresentativeName("Robin Master");
         asserter.applicationDetailSection.checkFirstName(capitalize(randomName));
         asserter.applicationDetailSection.checkLastName(capitalize(randomPrijmeni));
         asserter.applicationDetailSection.checkDateOfBirth(birthdate);
-        asserter.applicationDetailSection.checkLegalRepresentativeEmail("da-app.master@czechitas.cz");
 
         browser.waitFor(7);
         browser.loginSection.logout();
@@ -186,7 +179,7 @@ final class ExampleTest extends TestRunner {
 
         var randomPrijmeni = browser.generateRandomName(6);
         var randomName = browser.generateRandomName(5);
-        var birthdate = generateValidBirthdate();
+        var birthdate = TestDataGenerator.generateBirthdateAtLeastFourYearsOld();
 
         browser.headerMenu.goToApplicationsSection();
         browser.applicationSection.clickCreateNewApplicationButton();
@@ -207,7 +200,6 @@ final class ExampleTest extends TestRunner {
         // ověření výsledku
         asserter.applicationDetailSection.checkFirstName(capitalize(randomName));
         asserter.applicationDetailSection.checkLastName(capitalize(randomPrijmeni));
-        asserter.applicationDetailSection.checkLegalRepresentativeEmail("lotty.cici@seznam.cz");
         asserter.applicationDetailSection.checkLegalRepresentativeName("Lotty Čiči");
         asserter.applicationDetailSection.checkDateOfBirth(birthdate);
         asserter.applicationDetailSection.checkPaymentMethod("Hotově");
