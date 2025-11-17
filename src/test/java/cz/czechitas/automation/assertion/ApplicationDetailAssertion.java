@@ -59,17 +59,17 @@ public final class ApplicationDetailAssertion {
     }
 
     public void checkTerm(String term) {
-        var dateElement = elementFinder.findByCssSelector(".card-body h4");
+        var dateElement = elementFinder.findByCssSelector(".card-body h4, .card-title");
         assertThat(dateElement.getText()).contains(term);
     }
 
-    public void checkHealthDisabilityNote(String healthRestrictionNote) {
+        public void checkHealthDisabilityNote(String healthRestrictionNote) {
         var healthRestrictionNoteElement = elementFinder.findByXPath("//table/tbody//td[text()='Zdravotní omezení:']/../td[2]");
         assertThat(healthRestrictionNoteElement.getText()).isEqualTo(healthRestrictionNote);
     }
 
     public void checkLegalRepresentativeEmail(String expectedEmail) {
-        var emailElement = elementFinder.findByXPath("/html/body/div/div/div/div/div/table/tbody/tr[9]/td[2]");
+        var emailElement = elementFinder.findByXPath("//td[text()='E-mail zákonného zástupce']/following-sibling::td");
         assertThat(emailElement.getText()).isEqualTo(expectedEmail);
     }
 
